@@ -20,7 +20,7 @@ export class JsonPostRepository implements PostRepository {
     await new Promise((resolve) => setTimeout(resolve, SIMULATE_DELAY));
   }
 
-  private async readFromDisk() {
+  private async readFromDisk(): Promise<PostModel[]> {
     const jsonContent = await readFile(JSON_POSTS_FILEPATH, "utf-8");
     const parsedJson = JSON.parse(jsonContent);
     const { posts } = parsedJson;
@@ -30,7 +30,7 @@ export class JsonPostRepository implements PostRepository {
   async findAllPublic(): Promise<PostModel[]> {
     await this.simulateWait();
     const posts = await this.readFromDisk();
-    return posts;
+    return posts.filter(post => post.published);
   }
 
   async findById(id: string): Promise<PostModel> {
