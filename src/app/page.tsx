@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <Container>
       <Header />
-      <PostFeatured/>
+      <PostFeatured />
       <Suspense fallback={<SpinLoader />}>
         <PostList />
       </Suspense>

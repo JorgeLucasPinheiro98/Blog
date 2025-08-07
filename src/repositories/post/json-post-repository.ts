@@ -1,7 +1,7 @@
 import { PostModel } from "@/models/post/post-model";
 import { PostRepository } from "./post-reposytory";
 import { resolve } from "path";
-import { readFile } from "fs/promises"
+import { readFile } from "fs/promises";
 
 const ROOT_DIR = process.cwd();
 const JSON_POSTS_FILEPATH = resolve(
@@ -12,36 +12,36 @@ const JSON_POSTS_FILEPATH = resolve(
   "posts.json"
 );
 
-const SIMULATE_DELAY = 0
+const SIMULATE_DELAY = 0;
 
 export class JsonPostRepository implements PostRepository {
-    private async simulateWait() {
-        if(SIMULATE_DELAY <= 0) return;
-        await new Promise(resolve => setTimeout(resolve, SIMULATE_DELAY))
-    }
+  private async simulateWait() {
+    if (SIMULATE_DELAY <= 0) return;
+    await new Promise((resolve) => setTimeout(resolve, SIMULATE_DELAY));
+  }
 
-    private async readFromDisk() {
-        const jsonContent = await readFile(JSON_POSTS_FILEPATH, 'utf-8')
-        const parsedJson = JSON.parse(jsonContent)
-        const { posts } = parsedJson
-        return posts
-    }
-    
-    async findAll(): Promise<PostModel[]> {
-        await this.simulateWait()
-        const posts = await this.readFromDisk()
-        return posts
-    }
+  private async readFromDisk() {
+    const jsonContent = await readFile(JSON_POSTS_FILEPATH, "utf-8");
+    const parsedJson = JSON.parse(jsonContent);
+    const { posts } = parsedJson;
+    return posts;
+  }
 
-    async findById(id: string): Promise<PostModel> {
-        await this.simulateWait()
+  async findAllPublic(): Promise<PostModel[]> {
+    await this.simulateWait();
+    const posts = await this.readFromDisk();
+    return posts;
+  }
 
-        const posts = await this.findAll()
-        const post = posts.find(post => post.id === id)
+  async findById(id: string): Promise<PostModel> {
+    await this.simulateWait();
 
-        if(!post) throw new Error('Id não encontrado')
-        return post
-    }
+    const posts = await this.findAllPublic();
+    const post = posts.find((post) => post.id === id);
+
+    if (!post) throw new Error("Id não encontrado");
+    return post;
+  }
 }
 
 export const postRepository = new JsonPostRepository();
