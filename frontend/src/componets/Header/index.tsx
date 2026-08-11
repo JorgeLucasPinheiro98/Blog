@@ -1,6 +1,8 @@
-export default function Headers() {
+import style from './style.module.css'
+
+export function Headers() {
     return (
-      <header id="header">
+      <header className={style.header}>
         <nav aria-label="Navegação principal">
           <a href="#inicio">Início</a>
           <a href="#noticias">Notícias</a>
