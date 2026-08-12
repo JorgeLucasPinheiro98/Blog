@@ -1,0 +1,60 @@
+/* Container dos cards */
+.div {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.div a {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none; /* Remove o sublinhado do link */
+  color: inherit; /* Mantém a cor padrão do texto */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.div a:hover,
+.div a:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-color: #494646;
+  outline: none;
+}
+
+.div h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 0.75rem 0;
+  transition: color 0.2s ease;
+}
+
+.div a:hover h1 {
+  color: #68696d;
+}
+
+.div p:nth-of-type(1) {
+  color: #555555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  flex-grow: 1; /* Mantém a data alinhada na base */
+}
+
+.div p:nth-of-type(2) {
+  color: #525050;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.div hr {
+  display: none;
+}
