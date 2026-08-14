@@ -1,12 +1,10 @@
-export type Categoria = "cidade" | "regiao" | "publico" | "esportes" | "eventos";
-
 export interface Post {
-    id: string;
-    titulo: string;
-    slug: string;
-    resumo: string;
-    conteudo: string;
-    imagem: string;
-    data: string;
-    categoria: Categoria;
+    id: string
+    titulo: string | undefined;
+    slug: string
+    resumo: string | undefined;
+    conteudo: string | undefined;
+    imagem: string | undefined;
+    data: string | undefined;
+    categoria: string | undefined;
 }

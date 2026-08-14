@@ -1,23 +1,30 @@
-import type { Categoria, Post } from "../types/Post";
+import type { Post } from "../types/Post";
 
-class NewPost implements Post{
-    id: string;
-    titulo: string;
-    slug: string;
-    resumo: string;
-    conteudo: string;
-    imagem: string;
-    data: string;
-    categoria: Categoria;
+export class NewPost implements Post{
+    id: string
+    titulo: string | undefined;
+    slug: string
+    resumo: string | undefined;
+    conteudo: string | undefined;
+    imagem: string | undefined;
+    data: string | undefined;
+    categoria: string | undefined;
 
-    constructor(titulo: string, resumo: string, conteudo: string, imagem: string, data:string, categoria: Categoria) {
-        this.id = ''
+    constructor(
+        titulo: string | undefined, 
+        resumo: string | undefined, 
+        conteudo: string | undefined, 
+        imagem: string | undefined, 
+        categoria: string | undefined) 
+        
+        {
+        this.id = crypto.randomUUID();
         this.titulo = titulo;
-        this.slug = '';
+        this.slug = this.id
         this.resumo = resumo;
         this.conteudo = conteudo;
         this.imagem = imagem;
-        this.data = data;
+        this.data = new Date().toISOString();
         this.categoria = categoria;
     }
 }
