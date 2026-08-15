@@ -16,8 +16,8 @@ function App() {
   return (
     <>
     <Headers/>
-    <AddCards onPostAdded={handleAddPost}/>
     <Cards postsList={posts}/>
+    <AddCards onPostAdded={handleAddPost}/>
     </>
   )
 }

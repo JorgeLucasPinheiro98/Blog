@@ -1,7 +1,6 @@
-import { NewPost } from "../Class/Post";
 import type { Post } from "../types/Post";
 
-export const response: Post[] = [
+const muckResponse: Post[] = [
     {
       id: "1",
       titulo: "Obras de revitalização da Praça Central avançam para fase final",
@@ -104,12 +103,7 @@ export const response: Post[] = [
     }
   ];
 
-  export const newPost = new NewPost(
-      "Cineclube exibe documentário gratuito sobre a história e cultura da cidade",
-      "Sessão especial acontecerá no auditório municipal com direito a debate no final.",
-      "O projeto Cineclube promove nesta quinta-feira a exibição do documentário que retrata a história e o desenvolvimento cultural do município. A entrada é gratuita e sujeita à lotação do auditório.",
-      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800",
-      "eventos"
-  )
+const getResponse: Post[] = [];
 
-  response.push(newPost);
+
+export const response = getResponse || muckResponse;
