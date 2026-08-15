@@ -2,8 +2,13 @@ import { response } from "../../database/database";
 import type { Post } from "../../types/Post";
 import style from "./style.module.css"
 
-export function Cards() {
-        const dates:Post[] = response;
+interface CardsProps {
+    postsList:Post[];
+}
+
+export function Cards({postsList}: CardsProps) {
+        const dates:Post[] = postsList || response;
+
         const listCards = dates.map(date => 
             <a key={date.id} href={date.slug}>
                 <h1>{date.titulo}</h1>
