@@ -1,4 +1,6 @@
-import axios from "axios"
+import axios from "axios";
+
+axios.defaults.validateStatus = () => true;
 
 type Posts = {
     id: string
