@@ -1,4 +1,12 @@
 import type { Post } from "../types/Post";
+import axios from "axios";
+
+async function getDados() {
+  const dados = await axios.get('http://localhost:3000/posts');
+  return dados.data;
+}
+
+const dados = await getDados();
 
 const muckResponse: Post[] = [
     {
@@ -103,7 +111,6 @@ const muckResponse: Post[] = [
     }
   ];
 
-const getResponse: Post[] = [];
-
+const getResponse: Post[] = dados;
 
 export const response = getResponse || muckResponse;
