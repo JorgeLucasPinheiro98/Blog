@@ -45,6 +45,8 @@ app.post("/posts", (req: Request, res: Response) => {
     console.log(dados)
     arrayDados.push(dados)
     res.status(201).json(dados)
+
+    //Arrumar o post
 })
 
 app.listen(port, () => console.log(`Server Runing in port: ${port}`));
