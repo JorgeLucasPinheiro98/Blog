@@ -1,3 +1,4 @@
+import axios from "axios";
 import { NewPost } from "../../Class/Post";
 import type { Post } from "../../types/Post";
 import style from "./style.module.css"
@@ -5,6 +6,10 @@ import style from "./style.module.css"
 
 interface AddCardsProps {
     onPostAdded: (newPost: Post) => void;
+}
+
+async function submitPost (post: Post) {
+    await axios.post('http://localhost:3000/posts', post)
 }
 
 export function AddCards({ onPostAdded }: AddCardsProps) {
@@ -18,6 +23,7 @@ export function AddCards({ onPostAdded }: AddCardsProps) {
         const post = new NewPost(titulo, resumo, conteudo, imagem, categoria)
 
         onPostAdded(post);
+        submitPost(post);
     }
 
     return (
