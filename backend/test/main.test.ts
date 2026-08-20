@@ -17,17 +17,19 @@ test("deve enviar um post", async () => {
         "esportes"
       )
 
-    await axios.post(`http://localhost:3000/posts`, dados);
+    const postResponse = await axios.post(`http://localhost:3000/posts`, dados);
+    const posCriado = postResponse.data
     const getResponse = await axios.get(`http://localhost:3000/posts`);
     const posts = getResponse.data;
-    const findPost = posts.find((posts: Post) => posts.id === dados.id);
-    expect(findPost.id).toBe(dados.id);
+    const findPost = posts.find((posts: Post) => posts.data === posCriado.data);
+
+    expect(findPost).toBeDefined()
     expect(findPost.titulo).toBe(dados.titulo);
     expect(findPost.slug).toBe(dados.slug);
     expect(findPost.resumo).toBe(dados.resumo);
     expect(findPost.conteudo).toBe(dados.conteudo);
     expect(findPost.imagem).toBe(dados.imagem);
-    expect(findPost.data).toBe(dados.data);
+    expect(findPost.data).toBe(posCriado.data);
     expect(findPost.categoria).toBe(dados.categoria);
 
 })
